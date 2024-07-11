@@ -436,4 +436,4 @@ setTimeout(function(){
 }, 100)*/
 
 document.querySelector("#startText").style.width = cellSize*fieldW+"px"
-document.querySelector("#startText").innerHTML = "Знайдзіце і вылучыце як мага больш слоў, пакуль літары не перайшлі за верхні радок!<br>Чым даўжэй слова, тым лепей.<br><span style='color: yellow;'>Жоўтая</span> літара - трайныя балы за слова.<br><span style='color: red;'>Чырвоная</span> літара - усё слова робіць выбух!<br>Узровень будзе аднолькавы ў усіх гульцоў,<br>але ён змяняецца кожны дзень!"
+document.querySelector("#startText").innerHTML = "Знайдзіце і вылучыце як мага больш слоў, пакуль літары не перайшлі за верхні радок!<br>Чым даўжэй слова, тым лепей.<br><span style='color: yellow;'>Жоўтая</span> літара - трайныя балы за слова.<br><span style='color: red;'>Чырвоная</span> літара - усё слова робіць выбух!<br>Узровень будзе аднолькавы ва ўсіх гульцоў,<br>але ён змяняецца кожны дзень!"
