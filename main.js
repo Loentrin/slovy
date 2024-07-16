@@ -1,7 +1,10 @@
 var c = document.getElementById('c')
 var ctx = c.getContext('2d')
 
-var cellSize = Math.floor(window.innerHeight/13.5)
+var cellSize = 50
+
+if(/Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) cellSize = 100
+
 var fieldW = 8
 var fieldH = 12
 var cardId = 0
@@ -321,7 +324,7 @@ function draw(){
 		ctx.strokeStyle = "#666666"
 		ctx.strokeRect(card.x, card.y, cellSize, cellSize)
 
-		ctx.font = '30px Balsamiq Sans'
+		ctx.font = 30*cellSize/50 + 'px Balsamiq Sans'
 		ctx.fillStyle = "white"
 		ctx.fillText(card.letter, card.x + cellSize/2, card.y + cellSize/2)
 
@@ -436,4 +439,5 @@ setTimeout(function(){
 }, 100)*/
 
 document.querySelector("#startText").style.width = cellSize*fieldW+"px"
+document.querySelector("#startText").style.fontSize = 25*cellSize/50+"px"
 document.querySelector("#startText").innerHTML = "Знайдзіце і вылучыце як мага больш слоў, пакуль літары не перайшлі за верхні радок!<br>Чым даўжэй слова, тым лепей.<br><span style='color: yellow;'>Жоўтая</span> літара - падвоеныя балы за слова.<br><span style='color: red;'>Чырвоная</span> літара - усё слова робіць выбух!<br>Узровень будзе аднолькавы ва ўсіх гульцоў,<br>але ён змяняецца кожны дзень!"
