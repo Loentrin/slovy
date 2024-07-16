@@ -26,7 +26,7 @@ RNG.prototype.choice = function(array) {
 }
 
 var date = new Date()
-var daySeed = date.getDate()*2+date.getMonth()*3+(date.getFullYear()-2024)*5
+var daySeed = date.getDate()*299+date.getMonth()*177+date.getFullYear()*1089
 
 var rng = new RNG(daySeed)
 var rng2 = new RNG(daySeed)

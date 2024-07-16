@@ -3,7 +3,7 @@ var ctx = c.getContext('2d')
 
 var cellSize = 50
 
-if('ontouchstart' in window || navigator.maxTouchPoints > 0) cellSize = 20
+if('ontouchstart' in window || navigator.maxTouchPoints > 0) cellSize = 30
 
 var fieldW = 8
 var fieldH = 12
@@ -151,7 +151,13 @@ document.addEventListener('keydown', function(e){
 	}
 })
 
-document.addEventListener('mouseup', function(e){
+function releaseEvent(e){
+	if(e.changedTouches){
+		e.preventDefault()
+		e = e.changedTouches[0]
+		e.x = e.pageX
+		e.y = e.pageY
+	}
 	if(currentWordLegal){
 		var wordScore = currentWordScore*currentWord.length*currentWordSpecialMult
 		var highlitedWord = currentWord.split('')
@@ -222,19 +228,27 @@ document.addEventListener('mouseup', function(e){
 	selected = []
 	mouse.down = false
 	currentWord = ""
-currentWordCellIds = []
-currentWordScore = 0
-})
+	currentWordCellIds = []
+	currentWordScore = 0
+}
 
-c.addEventListener('mouseleave', function(e){
+function leaveEvent(e){
 	selected = []
 	mouse.down = false
 	currentWord = ""
 currentWordCellIds = []
 currentWordScore = 0
-})
+}
 
-document.addEventListener('mousemove', function(e){
+
+
+function moveEvent(e){
+	if(e.changedTouches){
+		e.preventDefault()
+		e = e.changedTouches[0]
+		e.x = e.pageX
+		e.y = e.pageY
+	}
 	if(gameOver) return 0
 	mouse.x = e.x-c.getBoundingClientRect().left
 	mouse.y = e.y-c.getBoundingClientRect().top
@@ -276,9 +290,11 @@ document.addEventListener('mousemove', function(e){
 	}
 	currentWordLegal = currentWord.length >= 3 && words.includes(currentWord.toLowerCase())
 	//currentWordLegal = 1
-})
+}
 
-document.addEventListener('mousedown', function(e){
+
+
+function pressEvent(e){
 	if(!waitingForNewRow){
 		selected = []
 		mouse.down = true
@@ -286,7 +302,17 @@ document.addEventListener('mousedown', function(e){
 		currentWordCellIds = []
 		currentWordScore = 0
 	}
-})
+}
+
+document.addEventListener('mousemove', moveEvent)
+document.addEventListener('mousedown', pressEvent)
+c.addEventListener('mouseleave', leaveEvent)
+document.addEventListener('mouseup', releaseEvent)
+
+document.addEventListener('touchmove', moveEvent)
+document.addEventListener('touchdown', pressEvent)
+c.addEventListener('touchleave', leaveEvent)
+document.addEventListener('toucheup', releaseEvent)
 
 function draw(){
 	ctx.clearRect(0, 0, c.width, c.height)
