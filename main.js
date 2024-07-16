@@ -1,7 +1,7 @@
 var c = document.getElementById('c')
 var ctx = c.getContext('2d')
 
-var cellSize = 50
+var cellSize = Math.floor(window.innerHeight/13.5)
 var fieldW = 8
 var fieldH = 12
 var cardId = 0
@@ -355,7 +355,7 @@ setInterval(function(){
 	currentWordCellIds.forEach(id => {
 		cards.forEach(c => {
 			if(c.id == id && c.type == 2){
-				currentWordSpecialMult *= 3
+				currentWordSpecialMult *= 2
 				return 0
 			} 
 		})
@@ -436,4 +436,4 @@ setTimeout(function(){
 }, 100)*/
 
 document.querySelector("#startText").style.width = cellSize*fieldW+"px"
-document.querySelector("#startText").innerHTML = "Знайдзіце і вылучыце як мага больш слоў, пакуль літары не перайшлі за верхні радок!<br>Чым даўжэй слова, тым лепей.<br><span style='color: yellow;'>Жоўтая</span> літара - трайныя балы за слова.<br><span style='color: red;'>Чырвоная</span> літара - усё слова робіць выбух!<br>Узровень будзе аднолькавы ва ўсіх гульцоў,<br>але ён змяняецца кожны дзень!"
+document.querySelector("#startText").innerHTML = "Знайдзіце і вылучыце як мага больш слоў, пакуль літары не перайшлі за верхні радок!<br>Чым даўжэй слова, тым лепей.<br><span style='color: yellow;'>Жоўтая</span> літара - падвоеныя балы за слова.<br><span style='color: red;'>Чырвоная</span> літара - усё слова робіць выбух!<br>Узровень будзе аднолькавы ва ўсіх гульцоў,<br>але ён змяняецца кожны дзень!"
