@@ -3,7 +3,7 @@ var ctx = c.getContext('2d')
 
 var cellSize = 50
 
-if('ontouchstart' in window || navigator.maxTouchPoints > 0) cellSize = 70
+if('ontouchstart' in window || navigator.maxTouchPoints > 0) cellSize = 20
 
 var fieldW = 8
 var fieldH = 12
